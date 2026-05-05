@@ -1,0 +1,413 @@
+/* ============================================================
+   SOLIS DESIGN TOKENS — Direction "Aurore"
+   ============================================================
+   Identité cosmique en mode light : bleu nuit profond,
+   magenta aurore comme signal fort, ambre solaire en touche rare.
+
+   Conventions :
+   - Toutes les variables sont préfixées --solis-* pour éviter
+     les collisions avec d'autres systèmes (shadcn/ui, etc.)
+   - Couleurs en HSL pour permettre le tweaking facile et un futur
+     dark mode (changer juste les valeurs L)
+   - Échelle d'espacement base-8 (généreuse, brand fort)
+   - Typo basée sur Inter (open-source, très proche de Söhne)
+   ============================================================ */
+
+:root {
+  /* ----------------------------------------------------------
+     COLORS — Brand
+     ---------------------------------------------------------- */
+
+  /* Primary : bleu nuit profond — fond hero, headings, surfaces sombres */
+  --solis-primary-950: #0E0F38;
+  --solis-primary-900: #1A1B4B;   /* couleur de marque principale */
+  --solis-primary-800: #2D2F7A;
+  --solis-primary-700: #3D40A0;
+  --solis-primary-600: #4F53C4;
+  --solis-primary-500: #6B6FE0;
+  --solis-primary-400: #9498F0;
+  --solis-primary-300: #BCBFF7;
+  --solis-primary-200: #DADCFB;
+  --solis-primary-100: #ECEDFD;
+  --solis-primary-50:  #F5F5FE;
+
+  /* Accent : magenta aurore — CTA secondaires, badges signature, accents */
+  --solis-accent-950: #4A0B26;
+  --solis-accent-900: #6E0F38;
+  --solis-accent-800: #9A1450;
+  --solis-accent-700: #C81E68;
+  --solis-accent-600: #FF3D7F;   /* couleur d'accent principale */
+  --solis-accent-500: #FF6699;
+  --solis-accent-400: #FF8FB3;
+  --solis-accent-300: #FFB4CC;
+  --solis-accent-200: #FFD3E0;
+  --solis-accent-100: #FFE4EE;
+  --solis-accent-50:  #FFF1F6;
+
+  /* Highlight : ambre solaire — usage très ponctuel (highlight, étoile, alerte douce) */
+  --solis-highlight-700: #B8860B;
+  --solis-highlight-600: #D9A427;
+  --solis-highlight-500: #FFD66B;
+  --solis-highlight-300: #FFE9A8;
+  --solis-highlight-100: #FFF7DC;
+
+  /* ----------------------------------------------------------
+     COLORS — Neutrals (gris légèrement teinté violet)
+     ---------------------------------------------------------- */
+  --solis-neutral-1000: #0A0B1A;
+  --solis-neutral-900:  #1F202E;
+  --solis-neutral-800:  #2A2A35;   /* texte principal */
+  --solis-neutral-700:  #44455A;
+  --solis-neutral-600:  #6B6B7A;   /* texte secondaire */
+  --solis-neutral-500:  #8A8A98;   /* texte tertiaire */
+  --solis-neutral-400:  #B4B4BE;
+  --solis-neutral-300:  #D4D4DC;   /* borders */
+  --solis-neutral-200:  #E5E5EC;   /* borders subtils */
+  --solis-neutral-150:  #ECECF2;
+  --solis-neutral-100:  #F4F4F8;   /* backgrounds tertiary */
+  --solis-neutral-50:   #F8F6FB;   /* backgrounds page */
+  --solis-neutral-0:    #FFFFFF;
+
+  /* ----------------------------------------------------------
+     COLORS — Semantic (statuts, alertes)
+     ---------------------------------------------------------- */
+  --solis-success-700: #14532D;
+  --solis-success-500: #22C55E;
+  --solis-success-100: #DCFCE7;
+
+  --solis-warning-700: #78350F;
+  --solis-warning-500: #F59E0B;
+  --solis-warning-100: #FEF3C7;
+
+  --solis-danger-700: #7F1D1D;
+  --solis-danger-500: #EF4444;
+  --solis-danger-100: #FEE2E2;
+
+  --solis-info-700: #1E3A8A;
+  --solis-info-500: #3B82F6;
+  --solis-info-100: #DBEAFE;
+
+  /* ----------------------------------------------------------
+     COLORS — Statuts API (mapping métier dédié)
+     ---------------------------------------------------------- */
+  --solis-status-stable-bg:    var(--solis-success-100);
+  --solis-status-stable-fg:    var(--solis-success-700);
+
+  --solis-status-draft-bg:     var(--solis-warning-100);
+  --solis-status-draft-fg:     var(--solis-warning-700);
+
+  --solis-status-review-bg:    var(--solis-info-100);
+  --solis-status-review-fg:    var(--solis-info-700);
+
+  --solis-status-deprecated-bg: var(--solis-danger-100);
+  --solis-status-deprecated-fg: var(--solis-danger-700);
+
+  --solis-status-retired-bg:   var(--solis-neutral-150);
+  --solis-status-retired-fg:   var(--solis-neutral-700);
+
+  /* ----------------------------------------------------------
+     SEMANTIC ALIASES — utilise ceux-ci dans tes composants
+     ---------------------------------------------------------- */
+
+  /* Backgrounds */
+  --solis-bg-page:        var(--solis-neutral-50);
+  --solis-bg-surface:     var(--solis-neutral-0);
+  --solis-bg-subtle:      var(--solis-neutral-100);
+  --solis-bg-hover:       var(--solis-neutral-150);
+  --solis-bg-inverted:    var(--solis-primary-900);
+
+  /* Text */
+  --solis-text-primary:   var(--solis-neutral-800);
+  --solis-text-secondary: var(--solis-neutral-600);
+  --solis-text-tertiary:  var(--solis-neutral-500);
+  --solis-text-inverted:  var(--solis-neutral-0);
+  --solis-text-brand:     var(--solis-primary-900);
+  --solis-text-accent:    var(--solis-accent-700);
+  --solis-text-link:      var(--solis-primary-700);
+
+  /* Borders */
+  --solis-border-subtle:  var(--solis-neutral-200);
+  --solis-border-default: var(--solis-neutral-300);
+  --solis-border-strong:  var(--solis-neutral-400);
+  --solis-border-brand:   var(--solis-primary-900);
+  --solis-border-accent:  var(--solis-accent-600);
+
+  /* Focus ring */
+  --solis-ring-color:     var(--solis-accent-600);
+  --solis-ring-width:     2px;
+  --solis-ring-offset:    2px;
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+     ---------------------------------------------------------- */
+
+  /* Font families — Inter en open-source, très proche de Söhne */
+  --solis-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --solis-font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+  --solis-font-display: 'Inter', sans-serif; /* à remplacer par Söhne si licence achetée */
+
+  /* Sizes (échelle modulaire ratio 1.25) */
+  --solis-text-xs:   12px;
+  --solis-text-sm:   14px;
+  --solis-text-base: 15px;   /* base un peu plus grande pour ton brand fort */
+  --solis-text-md:   16px;
+  --solis-text-lg:   18px;
+  --solis-text-xl:   22px;
+  --solis-text-2xl:  28px;
+  --solis-text-3xl:  36px;   /* H1 hero */
+  --solis-text-4xl:  48px;
+  --solis-text-5xl:  64px;
+
+  /* Weights */
+  --solis-weight-regular: 400;
+  --solis-weight-medium:  500;
+  --solis-weight-semibold: 600;
+
+  /* Line heights */
+  --solis-leading-tight:   1.2;
+  --solis-leading-snug:    1.4;
+  --solis-leading-normal:  1.6;
+  --solis-leading-relaxed: 1.7;
+
+  /* Letter spacing */
+  --solis-tracking-tighter: -0.03em;
+  --solis-tracking-tight:   -0.015em;
+  --solis-tracking-normal:  0em;
+  --solis-tracking-wide:    0.04em;   /* pour le wordmark SOLIS en caps */
+  --solis-tracking-wider:   0.08em;   /* pour les section labels uppercase */
+
+  /* ----------------------------------------------------------
+     SPACING — base 8 (généreuse, signature brand fort)
+     ---------------------------------------------------------- */
+  --solis-space-0:  0;
+  --solis-space-1:  4px;
+  --solis-space-2:  8px;
+  --solis-space-3:  12px;
+  --solis-space-4:  16px;
+  --solis-space-5:  24px;
+  --solis-space-6:  32px;
+  --solis-space-7:  48px;
+  --solis-space-8:  64px;
+  --solis-space-9:  96px;
+  --solis-space-10: 128px;
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+     ---------------------------------------------------------- */
+  --solis-radius-none: 0;
+  --solis-radius-sm:   4px;
+  --solis-radius-md:   8px;
+  --solis-radius-lg:   12px;   /* cards, modales */
+  --solis-radius-xl:   16px;
+  --solis-radius-2xl:  24px;
+  --solis-radius-full: 9999px; /* pills, avatars */
+
+  /* ----------------------------------------------------------
+     SHADOWS — très subtiles (on reste flat-ish)
+     ---------------------------------------------------------- */
+  --solis-shadow-xs: 0 1px 2px rgba(26, 27, 75, 0.04);
+  --solis-shadow-sm: 0 2px 4px rgba(26, 27, 75, 0.06);
+  --solis-shadow-md: 0 4px 12px rgba(26, 27, 75, 0.08);
+  --solis-shadow-lg: 0 12px 32px rgba(26, 27, 75, 0.12);
+
+  /* Glow d'accent magenta — usage très ponctuel (CTA hero, focus) */
+  --solis-glow-accent: 0 0 24px rgba(255, 61, 127, 0.25);
+
+  /* ----------------------------------------------------------
+     TRANSITIONS
+     ---------------------------------------------------------- */
+  --solis-transition-fast:   120ms cubic-bezier(0.4, 0, 0.2, 1);
+  --solis-transition-base:   180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --solis-transition-slow:   280ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ----------------------------------------------------------
+     LAYOUT
+     ---------------------------------------------------------- */
+  --solis-container-sm:  640px;
+  --solis-container-md:  768px;
+  --solis-container-lg:  1024px;
+  --solis-container-xl:  1280px;
+  --solis-container-2xl: 1440px;   /* largeur max du catalogue */
+
+  /* Z-index scale */
+  --solis-z-base:     0;
+  --solis-z-dropdown: 100;
+  --solis-z-sticky:   200;
+  --solis-z-overlay:  300;
+  --solis-z-modal:    400;
+  --solis-z-toast:    500;
+}
+
+/* ============================================================
+   BASE STYLES — à appliquer globalement
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--solis-font-sans);
+  font-size: var(--solis-text-base);
+  line-height: var(--solis-leading-normal);
+  color: var(--solis-text-primary);
+  background-color: var(--solis-bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+}
+
+/* Headings — toujours en couleur brand pour la hiérarchie visuelle forte */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: var(--solis-weight-medium);
+  color: var(--solis-text-brand);
+  letter-spacing: var(--solis-tracking-tight);
+  line-height: var(--solis-leading-tight);
+}
+
+h1 { font-size: var(--solis-text-3xl); letter-spacing: var(--solis-tracking-tighter); }
+h2 { font-size: var(--solis-text-2xl); }
+h3 { font-size: var(--solis-text-xl); }
+h4 { font-size: var(--solis-text-lg); }
+h5 { font-size: var(--solis-text-md); }
+h6 { font-size: var(--solis-text-sm); text-transform: uppercase; letter-spacing: var(--solis-tracking-wider); color: var(--solis-text-tertiary); }
+
+p {
+  margin: 0;
+  line-height: var(--solis-leading-relaxed);
+}
+
+a {
+  color: var(--solis-text-link);
+  text-decoration: none;
+  transition: color var(--solis-transition-fast);
+}
+
+a:hover {
+  color: var(--solis-accent-700);
+}
+
+code, pre {
+  font-family: var(--solis-font-mono);
+  font-size: 0.9em;
+}
+
+/* Focus visible accessible */
+:focus-visible {
+  outline: var(--solis-ring-width) solid var(--solis-ring-color);
+  outline-offset: var(--solis-ring-offset);
+  border-radius: var(--solis-radius-sm);
+}
+
+/* ============================================================
+   UTILITY CLASSES — quelques helpers fréquents
+   ============================================================ */
+
+.solis-section-label {
+  font-size: var(--solis-text-xs);
+  font-weight: var(--solis-weight-medium);
+  letter-spacing: var(--solis-tracking-wider);
+  text-transform: uppercase;
+  color: var(--solis-text-tertiary);
+}
+
+/* Card de base — réutilise dans tes composants React */
+.solis-card {
+  background: var(--solis-bg-surface);
+  border: 1px solid var(--solis-border-subtle);
+  border-radius: var(--solis-radius-lg);
+  padding: var(--solis-space-4) var(--solis-space-5);
+  transition: border-color var(--solis-transition-fast),
+              box-shadow var(--solis-transition-fast);
+}
+
+.solis-card:hover {
+  border-color: var(--solis-border-default);
+  box-shadow: var(--solis-shadow-sm);
+}
+
+/* Card avec accent latéral magenta — signature visuelle Aurore */
+.solis-card--accent {
+  border-left: 3px solid var(--solis-accent-600);
+  border-radius: 0 var(--solis-radius-lg) var(--solis-radius-lg) 0;
+}
+
+/* Badges de statut */
+.solis-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--solis-text-xs);
+  font-weight: var(--solis-weight-medium);
+  padding: 2px 10px;
+  border-radius: var(--solis-radius-full);
+  letter-spacing: 0.02em;
+}
+
+.solis-badge--stable     { background: var(--solis-status-stable-bg);     color: var(--solis-status-stable-fg); }
+.solis-badge--draft      { background: var(--solis-status-draft-bg);      color: var(--solis-status-draft-fg); }
+.solis-badge--review     { background: var(--solis-status-review-bg);     color: var(--solis-status-review-fg); }
+.solis-badge--deprecated { background: var(--solis-status-deprecated-bg); color: var(--solis-status-deprecated-fg); }
+.solis-badge--retired    { background: var(--solis-status-retired-bg);    color: var(--solis-status-retired-fg); }
+
+/* Boutons */
+.solis-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--solis-space-2);
+  padding: 10px 18px;
+  border-radius: var(--solis-radius-md);
+  font-size: var(--solis-text-sm);
+  font-weight: var(--solis-weight-medium);
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--solis-transition-fast);
+  white-space: nowrap;
+}
+
+.solis-btn--primary {
+  background: var(--solis-primary-900);
+  color: var(--solis-text-inverted);
+}
+
+.solis-btn--primary:hover {
+  background: var(--solis-primary-800);
+}
+
+.solis-btn--secondary {
+  background: var(--solis-bg-surface);
+  color: var(--solis-text-brand);
+  border-color: var(--solis-border-brand);
+}
+
+.solis-btn--secondary:hover {
+  background: var(--solis-primary-50);
+}
+
+.solis-btn--accent {
+  background: var(--solis-accent-600);
+  color: var(--solis-text-inverted);
+}
+
+.solis-btn--accent:hover {
+  background: var(--solis-accent-700);
+  box-shadow: var(--solis-glow-accent);
+}
+
+.solis-btn--ghost {
+  background: transparent;
+  color: var(--solis-text-secondary);
+}
+
+.solis-btn--ghost:hover {
+  background: var(--solis-bg-subtle);
+  color: var(--solis-text-primary);
+}
