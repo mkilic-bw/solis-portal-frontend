@@ -1,0 +1,44 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--solis-space-5);
+  padding: var(--solis-space-4) var(--solis-space-6);
+  background: var(--solis-bg-surface);
+  border-bottom: 1px solid var(--solis-border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: var(--solis-z-sticky);
+}
+
+.logo {
+  font-family: var(--solis-font-display);
+  font-size: var(--solis-text-lg);
+  font-weight: var(--solis-weight-semibold);
+  color: var(--solis-text-brand);
+  letter-spacing: var(--solis-tracking-wide);
+  text-transform: lowercase;
+}
+
+.nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: var(--solis-space-5);
+}
+
+.signIn {
+  background: var(--solis-primary-900);
+  color: var(--solis-text-inverted);
+  border: none;
+  border-radius: var(--solis-radius-md);
+  padding: var(--solis-space-2) var(--solis-space-4);
+  font-size: var(--solis-text-sm);
+  font-weight: var(--solis-weight-medium);
+  cursor: pointer;
+  transition: background var(--solis-transition-fast);
+}
+
+.signIn:hover {
+  background: var(--solis-primary-800);
+}
