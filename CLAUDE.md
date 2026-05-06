@@ -178,6 +178,42 @@ export const mockApis: Api[] = [
 
 6. **Pas de placeholder lorem ipsum**. Pour les mocks d'APIs, utilise des noms réalistes inspirés du contexte BPCE / banking : Payments API, Customer Identity API, Account Statements API, Transaction Search API, KYC Verification API, etc.
 
+## ⚠️ Coexistence avec ui-ux-pro-max
+
+Le projet a la skill ui-ux-pro-max installée pour des recommandations UX
+(anti-patterns, accessibility, layout best practices). MAIS :
+
+- N'utilise PAS son générateur de design system (--design-system flag).
+  Notre design system est déjà défini dans src/styles/tokens.css (Aurore).
+- N'appelle pas search.py pour générer palettes ou font pairings — on a déjà.
+- TU PEUX consulter ses guidelines sur :
+  - les anti-patterns UX (--domain ux)
+  - les patterns React (--stack react)
+  - les composants accessibles (--domain accessibility)
+- Pour toute question de couleur/typo/spacing : utilise UNIQUEMENT
+  les variables --solis-* du tokens.css.
+
+Si tu hésites entre une recommandation ui-ux-pro-max et nos tokens,
+les tokens gagnent toujours.
+
+## Vision du Home
+
+Le Home (route `/`) est une **landing-catalogue non-loggée** avec un
+comportement de morphing au scroll :
+
+1. **Hero plein écran** : centré sur "Solis AI" — grosse searchbar
+   conversationnelle au centre, pas de slogan marketing classique.
+   La barre de recherche EST le hero.
+2. **Modal de chat IA** : au clic/Enter sur la searchbar, ouverture d'un
+   modal plein écran avec interface de chat. Pour MVP : message d'accueil
+   "Solis AI sera bientôt disponible" (pas de vraie LLM connectée).
+3. **Section catalogue** : sous le hero, filtres + grille de cards d'API.
+4. **Header morphing** : tant qu'on est sur le hero, header simple.
+   En scrollant vers le catalogue, la searchbar centrale "shrink" et
+   "s'envole" vers le header (animation FLIP via Framer Motion), et reste
+   sticky comme bouton "Solis AI" cliquable qui ouvre le même modal.
+5. Cible : **desktop only** pour le MVP. Pas de breakpoints mobile aujourd'hui.
+
 ## État actuel du projet
 
 - ✅ Tokens CSS prêts (`src/styles/tokens.css` — direction Aurore)
